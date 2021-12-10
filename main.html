@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+
+  <h1>fmm taki</h1>
+
+  <p id="student-list"></p>
+
+  <input type="file" onchange="liststudents()" id="file-selector">
+  <script type="text/javascript">
+    function liststudents() {
+      const fileSelector = document.getElementById('file-selector');
+      const student_list = document.getElementById('student-list')
+      const reader = new FileReader();
+      reader.addEventListener('load', () => {
+        // student_list.innerText = makeList(reader.result).join('<br>')
+        student_list.innerText = reader.result;
+      }, false)
+
+      const makeList = (text) => {
+        console.log('a')
+        const array = text.split('\n')
+        for (let i = 0; i < array.length; i += 4) {
+          array[i] = 'Name: ' + array[i]
+          array[i + 1] = 'Address: ' + array[i + 1]
+          array[i + 2] = 'Phone: ' + array[i + 2]
+          array[i + 2] = 'Course: ' + array[i + 3]
+        }
+        return array;
+      }
+    }
+  </script>
+</body>
+
+</html>
